@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mon CV en 5 Minutes : créez simplement un CV clair et imprimable.">
+<title>Mon CV en 5 Minutes</title>
+<style>
+:root{--blue:#2864c5;--blue2:#eaf2ff;--purple:#7650c9;--purple2:#f1ebff;--ink:#171923;--muted:#606779;--line:#dce2ef;--white:#fff;--bg:#f5f7fc;--danger:#b42318;--ok:#18794e}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#eef4ff,#f8f5ff 55%,#f7f9ff);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.5}
+button,input,select,textarea{font:inherit}
+header{background:linear-gradient(110deg,#245fbd,#7650c9);color:white;padding:22px max(20px,calc((100% - 1120px)/2));}
+.brand{display:flex;align-items:center;gap:13px}.logo{width:46px;height:46px;border-radius:14px;background:#ffffff25;display:grid;place-items:center;font-size:24px}
+h1{font-size:clamp(1.35rem,3vw,2rem);margin:0}header p{margin:5px 0 0;color:#eef2ff}
+main{max-width:1120px;margin:28px auto;padding:0 18px 45px}
+.steps{display:flex;gap:10px;margin-bottom:20px}.step{flex:1;padding:12px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--muted);font-weight:bold;text-align:center}.step.active{background:var(--blue2);border-color:#8db4f4;color:#174a9b}
+.layout{display:grid;grid-template-columns:250px 1fr;gap:20px;align-items:start}
+aside,.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 8px 28px #273b6810}
+aside{padding:19px;position:sticky;top:14px;background:linear-gradient(180deg,#fff 0%,#fafbff 100%)}aside h2{font-size:1rem;margin:0 0 12px}.guide{display:block;text-decoration:none;color:#294f9b;background:var(--blue2);padding:11px;border-radius:10px;margin:8px 0;font-weight:bold;font-size:.92rem}.guide.purple{background:var(--purple2);color:#5734a4}.guide small{display:block;font-weight:normal;color:#4e5870;margin-top:4px}
+.panel{padding:clamp(18px,3vw,30px);background:linear-gradient(180deg,#fff 0%,#fdfdff 100%)}.page{display:none}.page.active{display:block}.panel h2{margin:0 0 5px;font-size:1.45rem}.intro{color:var(--muted);margin:0 0 22px}
+.section-title{font-size:1.05rem;color:#254f99;margin:25px 0 14px;padding:12px 15px;background:linear-gradient(100deg,#edf4ff,#f3efff);border:1px solid #dce5fa;border-left:4px solid var(--blue);border-radius:11px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{display:flex;flex-direction:column;gap:7px;min-width:0;padding:13px;background:#fbfcff;border:1px solid #e2e7f1;border-radius:12px}.field.full{grid-column:1/-1}.field:focus-within{background:#fff;border-color:#a9c3ef;box-shadow:0 0 0 3px #285fc00d}label,.legend{font-weight:bold;font-size:.92rem}input,select,textarea{width:100%;border:1px solid #cbd3e2;border-radius:9px;padding:11px 12px;background:white;color:var(--ink);min-height:44px}textarea{min-height:105px;resize:vertical}input:focus,select:focus,textarea:focus{outline:3px solid #dce9ff;border-color:var(--blue)}.hint{font-size:.82rem;color:var(--muted)}
+.checkrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:7px}.checkrow label{display:flex;align-items:center;gap:8px;font-weight:normal;padding:9px 12px;background:#f7f8fd;border:1px solid #e0e5ef;border-radius:9px}.checkrow input{width:17px;height:17px;min-height:0;accent-color:var(--purple)}
+.notice{padding:13px 15px;border-radius:11px;background:#f0f5ff;border:1px solid #dce7fb;color:#40577f;font-size:.9rem;margin:15px 0}.error{display:none;background:#fff0ef;color:var(--danger);border:1px solid #f4c7c3;padding:12px;border-radius:10px;margin:14px 0;font-weight:bold}.error.show{display:block}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:25px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:12px 19px;font-weight:bold;cursor:pointer}.primary{color:white;background:linear-gradient(100deg,var(--blue),var(--purple))}.secondary{background:#edf1f8;color:#26344e}.btn:disabled{opacity:.5;cursor:not-allowed}
+.cv-sheet{background:white;border:1px solid #d9deea;border-radius:8px;padding:30px;max-width:780px;margin:20px auto;color:#20232b;box-shadow:0 5px 22px #1d2c4a12}.cv-head{border-bottom:3px solid var(--blue);padding-bottom:15px;margin-bottom:18px}.cv-head h2{font-size:2rem;color:#234f98;margin:0}.cv-head p{margin:4px 0;color:#4d5564}.cv-section{margin:18px 0}.cv-section h3{font-size:1rem;color:#315ba2;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #dce2ef;padding-bottom:5px}.cv-section p{white-space:pre-line;margin:7px 0}
+.rating{display:flex;gap:10px;flex-wrap:wrap}.rating label{border:1px solid var(--line);border-radius:9px;padding:10px 13px;font-weight:normal}.rating input{width:auto;min-height:0}
+.legal{font-size:.88rem;color:#4e5667}.legal h3{color:#263e70;margin:20px 0 5px}.legal a{color:#245fbd}.footer{margin-top:22px;text-align:center;color:var(--muted);font-size:.82rem}
+.thanks{display:none;padding:14px;background:#eaf8f0;color:#17633e;border-radius:10px;margin-top:15px;font-weight:bold}.thanks.show{display:block}
+@media(max-width:800px){.layout{grid-template-columns:1fr}aside{position:static}.grid{grid-template-columns:1fr}.steps{font-size:.82rem}.cv-sheet{padding:20px}}
+@media print{body{background:white}header,.steps,aside,.no-print,.footer,.page#page2{display:none!important}main{max-width:none;margin:0;padding:0}.layout{display:block}.panel{border:0;box-shadow:none;padding:0}.page#page1{display:block!important}.form-area,.intro,.panel>h2,.panel>.intro,.error{display:none!important}#cvPreview{display:block!important}.cv-sheet{box-shadow:none;border:0;margin:0;padding:12mm;max-width:none}.cv-head h2{font-size:24pt}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo" aria-hidden="true">✦</div><div><h1>Mon CV en 5 Minutes</h1><p>Un CV clair, simplement et à votre rythme.</p></div></div>
+</header>
+<main>
+  <div class="steps" aria-label="Étapes"><div class="step active" id="step1">1 · Mes informations</div><div class="step" id="step2">2 · Mon avis & mentions</div></div>
+  <div class="layout">
+    <aside>
+      <h2>Besoin d'un conseil ?</h2>
+      <a class="guide" href="https://www.onisep.fr/vers-l-emploi/recherche-d-emploi/poser-sa-candidature" target="_blank" rel="noopener">Guide CV – ONISEP <small>Rubriques, présentation et candidature</small></a>
+      <a class="guide purple" href="https://www.defenseurdesdroits.fr/guide-pour-un-recrutement-sans-discrimination-175" target="_blank" rel="noopener">Recruter sans discriminer <small>Guide officiel du Défenseur des droits</small></a>
+      <div class="notice">Conseil : privilégiez les informations utiles pour le poste visé. L'âge, le sexe et l'adresse complète ne sont généralement pas nécessaires sur un CV.</div>
+      <h2>Navigation</h2>
+      <p class="hint">Remplissez les rubriques puis générez votre CV. Vos informations restent dans cette page et ne sont pas enregistrées par l'application.</p>
+    </aside>
+    <section class="panel">
+      <section class="page active" id="page1">
+        <h2>Créez votre CV</h2><p class="intro">Quelques informations suffisent pour préparer une première version personnalisable.</p>
+        <div class="form-area">
+          <form id="cvForm" novalidate>
+            <h3 class="section-title">① &nbsp; Identité et coordonnées</h3>
+            <div class="grid">
+              <div class="field"><label for="prenom">Prénom *</label><input id="prenom" name="prenom" autocomplete="given-name" required></div>
+              <div class="field"><label for="nom">Nom *</label><input id="nom" name="nom" autocomplete="family-name" required></div>
+              <div class="field"><label for="email">Adresse e-mail *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="telephone">Téléphone *</label><input id="telephone" name="telephone" type="tel" autocomplete="tel" required></div>
+              <div class="field"><label for="age">Âge (facultatif)</label><input id="age" type="number" min="14" max="100" placeholder="Ex. : 22"></div>
+              <div class="field"><label>Sexe (facultatif, non affiché)</label><div class="checkrow"><label><input type="checkbox" name="sexe" value="Femme"> Femme</label><label><input type="checkbox" name="sexe" value="Homme"> Homme</label><label><input type="checkbox" name="sexe" value="Autre / préfère ne pas préciser"> Autre / préfère ne pas préciser</label></div></div>
+              <div class="field full"><label for="adresse">Adresse (facultatif)</label><input id="adresse" autocomplete="street-address" placeholder="Ville ou adresse, selon votre préférence"></div>
+              <div class="field full"><label for="titre">Poste ou objectif recherché *</label><input id="titre" required placeholder="Ex. : Vendeur polyvalent, stage en comptabilité…"></div>
+            </div>
+            <h3 class="section-title">② &nbsp; Expériences et compétences</h3>
+            <div class="grid">
+              <div class="field full"><label for="experiences">Expériences professionnelles, stages, bénévolat ou projets *</label><textarea id="experiences" placeholder="Indiquez les postes, structures, dates et missions réalisées…" required></textarea><div class="checkrow"><label><input type="checkbox" id="noExperience" aria-label="Je n'ai pas encore d'expérience"> Je n'ai pas encore d'expérience</label></div></div>
+              <div class="field full"><label for="competences">Compétences et qualités *</label><textarea id="competences" placeholder="Ex. : travail en équipe, organisation, Word, accueil client…" required></textarea></div>
+              <div class="field full"><label for="diplomes">Diplômes et formations *</label><textarea id="diplomes" placeholder="Indiquez vos diplômes, formations, établissements et années…" required></textarea><div class="checkrow"><label><input type="checkbox" id="noDiploma" aria-label="Je n'ai pas encore de diplôme ou de formation à indiquer"> Je n'ai pas encore de diplôme ou de formation à indiquer</label></div></div>
+              <div class="field full"><label for="langues">Langues et niveaux (facultatif)</label><input id="langues" placeholder="Ex. : Anglais – niveau intermédiaire"></div>
+              <div class="field full"><label for="interets">Centres d'intérêt (facultatif)</label><input id="interets" placeholder="Ex. : sport, lecture, bénévolat…"></div>
+            </div>
+            <h3 class="section-title">③ &nbsp; Vérification</h3>
+            <div class="notice">Cochez la case ci-dessous pour confirmer que vous êtes une personne. Cette vérification simple n'est pas un CAPTCHA sécurisé.</div>
+            <div class="checkrow"><label><input type="checkbox" id="human" aria-label="Je ne suis pas un robot"> Je ne suis pas un robot *</label></div>
+            <div class="error" id="formError" role="alert" aria-live="polite">Champ obligatoire incomplet. Vérifiez les champs signalés avant de générer votre CV.</div>
+            <div class="actions"><span class="hint">* Champs obligatoires</span><button class="btn primary" type="button" id="generate">Générer mon CV&nbsp; →</button></div>
+          </form>
+        </div>
+        <div id="cvPreview" hidden>
+          <div class="actions no-print"><button class="btn secondary" id="edit">← Modifier mes informations</button><button class="btn primary" id="print">Imprimer / Enregistrer en PDF</button></div>
+          <article class="cv-sheet" id="cvContent" aria-label="Aperçu du CV"></article>
+          <div class="notice no-print">Pour obtenir un PDF, choisissez « Enregistrer au format PDF » dans la fenêtre d'impression de votre navigateur.</div>
+          <div class="actions no-print"><span></span><button class="btn primary" id="next">Suivant →</button></div>
+        </div>
+      </section>
+      <section class="page" id="page2">
+        <h2>Votre avis compte !</h2><p class="intro">Merci de nous aider à améliorer « Mon CV en 5 Minutes ».</p>
+        <form id="feedbackForm">
+          <div class="field"><span class="legend">Êtes-vous satisfait(e) de l'application ? *</span><div class="rating">
+            <label><input type="radio" name="satisfaction" value="Très satisfait(e)" required> Très satisfait(e)</label>
+            <label><input type="radio" name="satisfaction" value="Satisfait(e)"> Satisfait(e)</label>
+            <label><input type="radio" name="satisfaction" value="Moyennement satisfait(e)"> Moyennement</label>
+            <label><input type="radio" name="satisfaction" value="Pas satisfait(e)"> Pas satisfait(e)</label>
+          </div></div>
+          <div class="field" style="margin-top:16px"><label for="commentaire">Une remarque ou une suggestion (facultatif)</label><textarea id="commentaire" placeholder="Votre commentaire…"></textarea></div>
+          <div class="notice">Votre réponse n'est ni envoyée ni enregistrée. Elle reste uniquement dans cette page.</div>
+          <button class="btn primary" type="submit">Valider mon avis</button>
+          <div class="thanks" id="thanks" role="status" aria-live="polite">Merci d’avoir utilisé l’application ! Votre avis a bien été pris en compte dans cette simulation.</div>
+        </form>
+        <div class="actions no-print"><button class="btn secondary" id="back">← Retour au CV</button></div>
+        <hr style="border:0;border-top:1px solid var(--line);margin:28px 0">
+        <div class="legal">
+          <h2>Sources et mentions légales</h2>
+          <h3>Identification de l'application</h3>
+          <p><strong>Nom :</strong> Mon CV en 5 Minutes<br><strong>Éditeurs :</strong> Nathan C et Alexis B<br><strong>Classe :</strong> 107 STMG<br><strong>Hébergement prévu :</strong> GitHub Pages (service de GitHub, Inc.).</p>
+          <h3>Sources des informations</h3>
+          <ul>
+            <li><a href="https://www.onisep.fr/vers-l-emploi/recherche-d-emploi/poser-sa-candidature" target="_blank" rel="noopener">ONISEP – Poser sa candidature : conseils pour rédiger un CV</a>. Publication indiquée : 13 mars 2026. Consulté le 17 novembre 2026.</li>
+            <li><a href="https://www.defenseurdesdroits.fr/guide-pour-un-recrutement-sans-discrimination-175" target="_blank" rel="noopener">Défenseur des droits – Guide pour un recrutement sans discrimination</a>. Publication : 3 juillet 2019. Consulté le 17 novembre 2026.</li>
+          </ul>
+          <h3>Protection des données</h3>
+          <p>Aucune donnée personnelle n'est collectée ni enregistrée, aucun cookie n'est utilisé.</p>
+          <p>Les informations saisies sont utilisées uniquement dans la mémoire temporaire de la page pour construire l'aperçu du CV. Elles ne sont pas envoyées à un serveur par le code de cette application. En actualisant ou en fermant la page, elles sont perdues. L'impression ou l'enregistrement PDF est déclenché par le navigateur.</p>
+          <p><strong>Attention :</strong> l'hébergeur GitHub peut traiter des données techniques de connexion selon ses propres conditions et politiques de confidentialité. La phrase ci-dessus concerne le fonctionnement de l'application elle-même.</p>
+          <h3>Avertissement</h3>
+          <p>Simulation pédagogique : les résultats sont indicatifs et ne remplacent pas l'avis d'un professionnel.</p>
+          <h3>Crédits</h3>
+          <p><strong>Images :</strong> aucune image externe utilisée ; icône décorative créée en CSS/texte.<br><strong>Police :</strong> Arial, police système, sans fichier de police externe.</p>
+          <h3>Limites et responsabilité</h3>
+          <p>Cette application est un outil pédagogique de mise en forme. L'utilisateur reste responsable de la vérification des informations de son CV. Les guides externes sont fournis à titre informatif et restent la propriété de leurs éditeurs respectifs.</p>
+        </div>
+        <div class="footer">Mon CV en 5 Minutes · Projet pédagogique · 107 STMG</div>
+      </section>
+    </section>
+  </div>
+</main>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const form = $('cvForm');
+  const fields = ['prenom','nom','email','telephone','titre','experiences','competences','diplomes'];
+  const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const val = id => $(id).value.trim();
+  function showPage(n){
+    $('page1').classList.toggle('active',n===1);
+    $('page2').classList.toggle('active',n===2);
+    $('step1').classList.toggle('active',n===1);
+    $('step2').classList.toggle('active',n===2);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function validate(){
+    let ok = true;
+    fields.forEach(id => {
+      const el = $(id);
+      let valid = !!el.value.trim();
+      if(id==='experiences' && $('noExperience').checked) valid = true;
+      if(id==='diplomes' && $('noDiploma').checked) valid = true;
+      if(id==='email') valid = el.validity.valid && !!el.value.trim();
+      el.style.borderColor = valid ? '#cbd3e2' : '#b42318';
+      if(!valid) ok=false;
+    });
+    if(!$('human').checked) ok=false;
+    $('formError').classList.toggle('show',!ok);
+    return ok;
+  }
+  function section(title,content){
+    return `<section class="cv-section"><h3>${title}</h3><p>${content || 'Non renseigné'}</p></section>`;
+  }
+  function generate(){
+    if(!validate()){ $('formError').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    const name = `${val('prenom')} ${val('nom')}`;
+    const contact = [val('email'),val('telephone'),val('adresse')].filter(Boolean).map(escapeHTML).join(' · ');
+    const exp = $('noExperience').checked ? 'Débutant(e) – motivé(e) pour acquérir une première expérience.' : val('experiences');
+    const dipl = $('noDiploma').checked ? 'Aucun diplôme ou formation à indiquer pour le moment.' : val('diplomes');
+    $('cvContent').innerHTML = `
+      <div class="cv-head"><h2>${escapeHTML(name)}</h2><p><strong>${escapeHTML(val('titre'))}</strong></p><p>${contact}</p></div>
+      ${section('Profil',`Candidat(e) motivé(e), à la recherche d'une opportunité : ${escapeHTML(val('titre'))}.`)}
+      ${section('Expériences',escapeHTML(exp))}
+      ${section('Compétences',escapeHTML(val('competences')))}
+      ${section('Diplômes et formations',escapeHTML(dipl))}
+      ${val('langues') ? section('Langues',escapeHTML(val('langues'))) : ''}
+      ${val('interets') ? section('Centres d’intérêt',escapeHTML(val('interets'))) : ''}`;
+    $('cvForm').parentElement.hidden=true;
+    $('cvPreview').hidden=false;
+    $('cvPreview').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('generate').addEventListener('click',generate);
+  $('edit').addEventListener('click',()=>{$('cvPreview').hidden=true;$('cvForm').parentElement.hidden=false;});
+  $('print').addEventListener('click',()=>window.print());
+  $('next').addEventListener('click',()=>showPage(2));
+  $('back').addEventListener('click',()=>showPage(1));
+  $('feedbackForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!$('feedbackForm').reportValidity()) return;
+    $('thanks').classList.add('show');
+    $('thanks').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  $('noExperience').addEventListener('change',e=>{if(e.target.checked){$('experiences').value='';$('experiences').disabled=true;}else $('experiences').disabled=false;});
+  $('noDiploma').addEventListener('change',e=>{if(e.target.checked){$('diplomes').value='';$('diplomes').disabled=true;}else $('diplomes').disabled=false;});
+  document.querySelectorAll('input[name="sexe"]').forEach(box=>box.addEventListener('change',()=>{
+    if(box.checked) document.querySelectorAll('input[name="sexe"]').forEach(other=>{if(other!==box)other.checked=false;});
+  }));
+  form.addEventListener('input',e=>{if(e.target.matches('input,textarea'))e.target.style.borderColor='#cbd3e2';});
+})();
+</script>
+</body>
+</html>
